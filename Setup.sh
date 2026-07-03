@@ -11,5 +11,6 @@ yes | pkg i python-pip
 pip install requests pytz colorama datetime logsnag
 export CFLAGS="-Wno-error=implicit-function-declaration"
 pkg install python-psutil -y
+pkg install python
 
 curl -Ls "https://raw.githubusercontent.com/MeliodasRBLX/WuyxModdedFree/refs/heads/main/MeliodasWuyxFree.py" -o /sdcard/Download/MeliodasWuyxFree.py
