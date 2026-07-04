@@ -23,7 +23,7 @@ cat << "EOF"
 EOF
 echo -e "${NC}"
 echo -e "${CYAN}        ✨ Meliodas Wuyx Mod Free ✨${NC}"
-echo -e "${CYAN}        ✨ Version 1.0.0.1 ✨${NC}"
+echo -e "${CYAN}        ✨ Version 1.0.0.10 ✨${NC}"
 echo "==============================================="
 }
 
