@@ -2,6 +2,7 @@
 
 clear
 
+# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -10,6 +11,9 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+# =========================
+# BANNER
+# =========================
 show_banner() {
 clear
 echo -e "${PURPLE}"
@@ -22,12 +26,13 @@ cat << "EOF"
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 EOF
 echo -e "${NC}"
-echo -e "${CYAN}        ✨ Meliodas Wuyx Mod Free ✨${NC}"
-echo -e "${CYAN}        ✨ Version 1.0.0.10 ✨${NC}"
+echo -e "${CYAN}        ✨ Meliodas Mod Boot System ✨${NC}"
 echo "==============================================="
 }
 
-
+# =========================
+# FAKE LOADING (15 sec)
+# =========================
 fake_boot() {
 echo ""
 echo -e "${GREEN}[+] Initializing system kernel...${NC}"
@@ -56,7 +61,9 @@ echo ""
 sleep 1
 }
 
-
+# =========================
+# CHECK INSTALLATION
+# =========================
 PY_INSTALLED=false
 SCRIPT_INSTALLED=false
 
@@ -68,11 +75,15 @@ if [ -f "/sdcard/Download/obf-wuyx_rejoin.py" ]; then
     SCRIPT_INSTALLED=true
 fi
 
-
+# =========================
+# START
+# =========================
 show_banner
 fake_boot
 
-
+# =========================
+# IF EVERYTHING EXISTS → SKIP INSTALL BUT STILL SHOW BOOT
+# =========================
 if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
     echo -e "${GREEN}[✓] System already configured${NC}"
     echo -e "${YELLOW}[+] Skipping installation phase...${NC}"
@@ -84,6 +95,9 @@ if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
     exit
 fi
 
+# =========================
+# INSTALLATION FLOW
+# =========================
 cd
 
 echo -e "${BLUE}[+] Setting up storage...${NC}"
