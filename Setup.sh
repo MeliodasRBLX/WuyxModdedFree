@@ -2,61 +2,91 @@
 
 clear
 
-RED=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swOzMxbQ==')))
-GREEN=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swOzMybQ==')))
-YELLOW=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1sxOzMzbQ==')))
-BLUE=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swOzM0bQ==')))
-PURPLE=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swOzM1bQ==')))
-CYAN=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swOzM2bQ==')))
-NC=([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('XDAzM1swbQ==')))
+# Colors
+WHITE='\033[1;37m'
+LBLUE='\033[1;36m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
+# =========================
+# GRADIENT BANNER EFFECT
+# =========================
 show_banner() {
 clear
-echo -e ${PURPLE}
-cat << ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('RU9G')))
-███╗   ███╗███████╗██╗     ██╗ ██████╗ ██████╗  █████╗ ███████╗
-████╗ ████║██╔════╝██║     ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝
-██╔████╔██║█████╗  ██║     ██║██║   ██║██║  ██║███████║███████╗
-██║╚██╔╝██║██╔══╝  ██║     ██║██║   ██║██║  ██║██╔══██║╚════██║
-██║ ╚═╝ ██║███████╗███████╗██║╚██████╔╝██████╔╝██║  ██║███████║
-╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
-EOF
-echo -e ${NC}
-echo -e (${CYAN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('ICAgICAgICDinKggTWVsaW9kYXMgV3V5eCBNb2QgRnJlZSDinKg='))) + ${NC})
-echo -e (${CYAN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('ICAgICAgICDinKggVmVyc2lvbiAxLjAuMC4xIOKcqA=='))) + ${NC})
-echo ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0=')))
-}
 
-
-boot() {
-echo ''
-echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIEluaXRpYWxpemluZyBzeXN0ZW0ga2VybmVsLi4u'))) + ${NC})
-sleep 1
-
-steps=(
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('TG9hZGluZyBtb2R1bGVz')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('Q2hlY2tpbmcgZW52aXJvbm1lbnQ=')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('TW91bnRpbmcgc3RvcmFnZQ==')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('VmVyaWZ5aW5nIFB5dGhvbiBydW50aW1l')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('QWxsb2NhdGluZyBtZW1vcnk=')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('SW5qZWN0aW5nIGRlcGVuZGVuY2llcw==')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('UmVzb2x2aW5nIHBhY2thZ2Vz')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('U3luY2luZyBzeXN0ZW0gdGltZQ==')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('Q2hlY2tpbmcgc2NyaXB0IGludGVncml0eQ==')))
-([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('RmluYWxpemluZyBib290IHNlcXVlbmNl')))
+lines=(
+"███╗   ███╗███████╗██╗     ██╗ ██████╗ ██████╗  █████╗ ███████╗"
+"████╗ ████║██╔════╝██║     ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝"
+"██╔████╔██║█████╗  ██║     ██║██║   ██║██║  ██║███████║███████╗"
+"██║╚██╔╝██║██╔══╝  ██║     ██║██║   ██║██║  ██║██╔══██║╚════██║"
+"██║ ╚═╝ ██║███████╗███████╗██║╚██████╔╝██████╔╝██║  ██║███████║"
+"╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝"
 )
 
-for i in ${steps[@]}; do
-    echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('Wy1dIA=='))) + $i + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('Li4u'))) + ${NC})
+echo ""
+
+# fake gradient (white → light blue)
+for i in "${!lines[@]}"; do
+    if [ $i -le 1 ]; then
+        echo -e "${WHITE}${lines[$i]}${NC}"
+    elif [ $i -le 3 ]; then
+        echo -e "${CYAN}${lines[$i]}${NC}"
+    else
+        echo -e "${LBLUE}${lines[$i]}${NC}"
+    fi
+    sleep 0.1
+done
+
+echo -e "${CYAN}"
+echo "        ✨ Meliodas Wuyx Mod Free✨"
+echo "        ✨ Version: 1.0.0.1 ✨"
+echo "==============================================="
+echo -e "${NC}"
+}
+
+# =========================
+# DISCORD AUTO OPEN
+# =========================
+open_discord() {
+echo -e "${YELLOW}[+] Opening Discord invite...${NC}"
+termux-open-url "https://discord.gg/YOUR_INVITE"
+sleep 2
+}
+
+# =========================
+# FAKE BOOT (15 sec)
+# =========================
+fake_boot() {
+echo ""
+echo -e "${GREEN}[+] Initializing system...${NC}"
+
+steps=(
+"Loading kernel"
+"Checking modules"
+"Mounting storage"
+"Verifying Python runtime"
+"Allocating memory"
+"Injecting dependencies"
+"Syncing system"
+"Finalizing boot"
+)
+
+for i in "${steps[@]}"; do
+    echo -e "${BLUE}[-] $i...${NC}"
     sleep 1.5
 done
 
-echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('W+Kck10gQm9vdCBzZXF1ZW5jZSBjb21wbGV0ZQ=='))) + ${NC})
-echo ''
+echo -e "${GREEN}[✓] Boot complete${NC}"
+echo ""
 sleep 1
 }
 
-
+# =========================
+# CHECK INSTALL
+# =========================
 PY_INSTALLED=false
 SCRIPT_INSTALLED=false
 
@@ -64,59 +94,62 @@ if command -v python >/dev/null 2>&1; then
     PY_INSTALLED=true
 fi
 
-if [ -f ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('L3NkY2FyZC9Eb3dubG9hZC9vYmYtd3V5eF9yZWpvaW4ucHk='))) ]; then
+if [ -f "/sdcard/Download/obf-wuyx_rejoin.py" ]; then
     SCRIPT_INSTALLED=true
 fi
 
-
+# =========================
+# START
+# =========================
 show_banner
-boot
+open_discord
+fake_boot
 
-
-if [ $PY_INSTALLED = true ] && [ $SCRIPT_INSTALLED = true ]; then
-    echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('W+Kck10gU3lzdGVtIGFscmVhZHkgY29uZmlndXJlZA=='))) + ${NC})
-    echo -e (${YELLOW} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIFNraXBwaW5nIGluc3RhbGxhdGlvbiBwaGFzZS4uLg=='))) + ${NC})
-    echo ''
-
-    echo -e (${PURPLE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIExhdW5jaGluZyBzY3JpcHQuLi4='))) + ${NC})
+# =========================
+# SKIP INSTALL IF READY
+# =========================
+if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
+    echo -e "${GREEN}[✓] Already installed${NC}"
+    echo -e "${YELLOW}[+] Skipping setup...${NC}"
     cd /sdcard/Download
     python obf-wuyx_rejoin.py
     exit
 fi
 
+# =========================
+# INSTALLATION
+# =========================
 cd
 
-echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIFNldHRpbmcgdXAgc3RvcmFnZS4uLg=='))) + ${NC})
+echo -e "${BLUE}[+] Setting up storage...${NC}"
 termux-setup-storage
 
-echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIFVwZGF0aW5nIHN5c3RlbSBwYWNrYWdlcy4uLg=='))) + ${NC})
+echo -e "${BLUE}[+] Updating system...${NC}"
 yes | pkg update -y
 yes | pkg upgrade -y
 
-if [ $PY_INSTALLED = false ]; then
-    echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIEluc3RhbGxpbmcgUHl0aG9uLi4u'))) + ${NC})
+if ! command -v python >/dev/null 2>&1; then
+    echo -e "${BLUE}[+] Installing Python...${NC}"
     yes | pkg install python python-pip -y
 else
-    echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('W+Kck10gUHl0aG9uIGFscmVhZHkgaW5zdGFsbGVk'))) + ${NC})
+    echo -e "${GREEN}[✓] Python already installed${NC}"
 fi
 
-echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIEluc3RhbGxpbmcgUHl0aG9uIG1vZHVsZXMuLi4='))) + ${NC})
+echo -e "${BLUE}[+] Installing modules...${NC}"
 pip install requests pytz colorama datetime logsnag psutil
 
-echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIEluc3RhbGxpbmcgc3lzdGVtIHRvb2xzLi4u'))) + ${NC})
+echo -e "${BLUE}[+] Installing tools...${NC}"
 pkg install python-psutil -y
 
-if [ $SCRIPT_INSTALLED = false ]; then
-    echo -e (${BLUE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIERvd25sb2FkaW5nIG1haW4gc2NyaXB0Li4u'))) + ${NC})
-    curl -Ls ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL01lbGlvZGFzUkJMWC9XdXl4TW9kZGVkRnJlZS9yZWZzL2hlYWRzL21haW4vb2JmLXd1eXhfcmVqb2luLnB5'))) \
+if [ "$SCRIPT_INSTALLED" = false ]; then
+    echo -e "${BLUE}[+] Downloading script...${NC}"
+    curl -Ls "https://raw.githubusercontent.com/MeliodasRBLX/WuyxModdedFree/refs/heads/main/obf-wuyx_rejoin.py" \
     -o /sdcard/Download/obf-wuyx_rejoin.py
-else
-    echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('W+Kck10gU2NyaXB0IGFscmVhZHkgZXhpc3Rz'))) + ${NC})
 fi
 
-echo ''
-echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('W+Kck10gSW5zdGFsbGF0aW9uIGNvbXBsZXRl'))) + ${NC})
-echo -e (${PURPLE} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIExhdW5jaGluZyBzY3JpcHQuLi4='))) + ${NC})
+echo ""
+echo -e "${GREEN}[✓] Setup complete${NC}"
+echo -e "${PURPLE}[+] Launching script...${NC}"
 
 cd /sdcard/Download
 python obf-wuyx_rejoin.py
