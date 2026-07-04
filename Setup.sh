@@ -28,7 +28,7 @@ echo ('======='+'======='+'======'+'========'+'======='+'=='+'===='+'==='+'=='+'
 }
 
 
-fake_boot() {
+boot() {
 echo ''
 echo -e (${GREEN} + ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('WytdIEluaXRpYWxpemluZyBzeXN0ZW0ga2VybmVsLi4u'))) + ${NC})
 sleep 1
@@ -70,7 +70,7 @@ fi
 
 
 show_banner
-fake_boot
+boot
 
 
 if [ $PY_INSTALLED = true ] && [ $SCRIPT_INSTALLED = true ]; then
