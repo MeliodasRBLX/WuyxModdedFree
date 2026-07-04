@@ -50,7 +50,7 @@ echo -e "${NC}"
 # =========================
 open_discord() {
 echo -e "${YELLOW}[+] Opening Discord invite...${NC}"
-termux-open-url "https://discord.gg/YOUR_INVITE"
+termux-open-url "https://discord.gg/reconnect"
 sleep 2
 }
 
