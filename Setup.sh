@@ -40,14 +40,13 @@ for i in "${!lines[@]}"; do
 done
 
 echo -e "${CYAN}"
-echo "        ✨ Meliodas Mod Boot System ✨"
+echo "        ✨ Meliodas Wuyx Mod Free ✨"
+echo "        ✨ Version: 1.0.0.1 ✨"
 echo "==============================================="
 echo -e "${NC}"
 }
 
-# =========================
-# DISCORD AUTO OPEN
-# =========================
+
 open_discord() {
 echo -e "${YELLOW}[+] Opening Discord invite...${NC}"
 termux-open-url "https://discord.gg/reconnect"
@@ -55,7 +54,7 @@ sleep 2
 }
 
 
-fake_boot() {
+boot() {
 echo ""
 echo -e "${GREEN}[+] Initializing system kernel...${NC}"
 sleep 1
@@ -97,7 +96,8 @@ fi
 
 
 show_banner
-fake_boot
+open_discord
+boot
 
 
 if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
