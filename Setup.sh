@@ -1,7 +1,6 @@
 #!/bin/bash
 
 clear
-
 # Colors
 WHITE='\033[1;37m'
 LBLUE='\033[1;36m'
@@ -41,8 +40,7 @@ for i in "${!lines[@]}"; do
 done
 
 echo -e "${CYAN}"
-echo "        ✨ Meliodas Wuyx Mod Free✨"
-echo "        ✨ Version: 1.0.0.1 ✨"
+echo "        ✨ Meliodas Mod Boot System ✨"
 echo "==============================================="
 echo -e "${NC}"
 }
@@ -56,22 +54,23 @@ termux-open-url "https://discord.gg/YOUR_INVITE"
 sleep 2
 }
 
-# =========================
-# FAKE BOOT (15 sec)
-# =========================
+
 fake_boot() {
 echo ""
-echo -e "${GREEN}[+] Initializing system...${NC}"
+echo -e "${GREEN}[+] Initializing system kernel...${NC}"
+sleep 1
 
 steps=(
-"Loading kernel"
-"Checking modules"
+"Loading modules"
+"Checking environment"
 "Mounting storage"
 "Verifying Python runtime"
 "Allocating memory"
 "Injecting dependencies"
-"Syncing system"
-"Finalizing boot"
+"Resolving packages"
+"Syncing system time"
+"Checking script integrity"
+"Finalizing boot sequence"
 )
 
 for i in "${steps[@]}"; do
@@ -79,14 +78,12 @@ for i in "${steps[@]}"; do
     sleep 1.5
 done
 
-echo -e "${GREEN}[✓] Boot complete${NC}"
+echo -e "${GREEN}[✓] Boot sequence complete${NC}"
 echo ""
 sleep 1
 }
 
-# =========================
-# CHECK INSTALL
-# =========================
+
 PY_INSTALLED=false
 SCRIPT_INSTALLED=false
 
@@ -98,57 +95,54 @@ if [ -f "/sdcard/Download/obf-wuyx_rejoin.py" ]; then
     SCRIPT_INSTALLED=true
 fi
 
-# =========================
-# START
-# =========================
+
 show_banner
-open_discord
 fake_boot
 
-# =========================
-# SKIP INSTALL IF READY
-# =========================
+
 if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
-    echo -e "${GREEN}[✓] Already installed${NC}"
-    echo -e "${YELLOW}[+] Skipping setup...${NC}"
+    echo -e "${GREEN}[✓] System already configured${NC}"
+    echo -e "${YELLOW}[+] Skipping installation phase...${NC}"
+    echo ""
+
+    echo -e "${PURPLE}[+] Launching script...${NC}"
     cd /sdcard/Download
     python obf-wuyx_rejoin.py
     exit
 fi
 
-# =========================
-# INSTALLATION
-# =========================
 cd
 
 echo -e "${BLUE}[+] Setting up storage...${NC}"
 termux-setup-storage
 
-echo -e "${BLUE}[+] Updating system...${NC}"
+echo -e "${BLUE}[+] Updating system packages...${NC}"
 yes | pkg update -y
 yes | pkg upgrade -y
 
-if ! command -v python >/dev/null 2>&1; then
+if [ "$PY_INSTALLED" = false ]; then
     echo -e "${BLUE}[+] Installing Python...${NC}"
     yes | pkg install python python-pip -y
 else
     echo -e "${GREEN}[✓] Python already installed${NC}"
 fi
 
-echo -e "${BLUE}[+] Installing modules...${NC}"
+echo -e "${BLUE}[+] Installing Python modules...${NC}"
 pip install requests pytz colorama datetime logsnag psutil
 
-echo -e "${BLUE}[+] Installing tools...${NC}"
+echo -e "${BLUE}[+] Installing system tools...${NC}"
 pkg install python-psutil -y
 
 if [ "$SCRIPT_INSTALLED" = false ]; then
-    echo -e "${BLUE}[+] Downloading script...${NC}"
+    echo -e "${BLUE}[+] Downloading main script...${NC}"
     curl -Ls "https://raw.githubusercontent.com/MeliodasRBLX/WuyxModdedFree/refs/heads/main/obf-wuyx_rejoin.py" \
     -o /sdcard/Download/obf-wuyx_rejoin.py
+else
+    echo -e "${GREEN}[✓] Script already exists${NC}"
 fi
 
 echo ""
-echo -e "${GREEN}[✓] Setup complete${NC}"
+echo -e "${GREEN}[✓] Installation complete${NC}"
 echo -e "${PURPLE}[+] Launching script...${NC}"
 
 cd /sdcard/Download
