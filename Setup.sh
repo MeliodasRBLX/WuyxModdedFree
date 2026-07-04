@@ -1,60 +1,34 @@
 #!/bin/bash
 
 clear
-# Colors
-WHITE='\033[1;37m'
-LBLUE='\033[1;36m'
-BLUE='\033[0;34m'
-CYAN='\033[0;36m'
+
+RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
 NC='\033[0m'
 
-# =========================
-# GRADIENT BANNER EFFECT
-# =========================
 show_banner() {
 clear
-
-lines=(
-"███╗   ███╗███████╗██╗     ██╗ ██████╗ ██████╗  █████╗ ███████╗"
-"████╗ ████║██╔════╝██║     ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝"
-"██╔████╔██║█████╗  ██║     ██║██║   ██║██║  ██║███████║███████╗"
-"██║╚██╔╝██║██╔══╝  ██║     ██║██║   ██║██║  ██║██╔══██║╚════██║"
-"██║ ╚═╝ ██║███████╗███████╗██║╚██████╔╝██████╔╝██║  ██║███████║"
-"╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝"
-)
-
-echo ""
-
-# fake gradient (white → light blue)
-for i in "${!lines[@]}"; do
-    if [ $i -le 1 ]; then
-        echo -e "${WHITE}${lines[$i]}${NC}"
-    elif [ $i -le 3 ]; then
-        echo -e "${CYAN}${lines[$i]}${NC}"
-    else
-        echo -e "${LBLUE}${lines[$i]}${NC}"
-    fi
-    sleep 0.1
-done
-
-echo -e "${CYAN}"
-echo "        ✨ Meliodas Wuyx Mod Free ✨"
-echo "        ✨ Version: 1.0.0.1 ✨"
-echo "==============================================="
+echo -e "${PURPLE}"
+cat << "EOF"
+███╗   ███╗███████╗██╗     ██╗ ██████╗ ██████╗  █████╗ ███████╗
+████╗ ████║██╔════╝██║     ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝
+██╔████╔██║█████╗  ██║     ██║██║   ██║██║  ██║███████║███████╗
+██║╚██╔╝██║██╔══╝  ██║     ██║██║   ██║██║  ██║██╔══██║╚════██║
+██║ ╚═╝ ██║███████╗███████╗██║╚██████╔╝██████╔╝██║  ██║███████║
+╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+EOF
 echo -e "${NC}"
+echo -e "${CYAN}        ✨ Meliodas Wuyx Mod Free ✨${NC}"
+echo -e "${CYAN}        ✨ Version 1.0.0.1 ✨${NC}"
+echo "==============================================="
 }
 
 
-open_discord() {
-echo -e "${YELLOW}[+] Opening Discord invite...${NC}"
-termux-open-url "https://discord.gg/reconnect"
-sleep 2
-}
-
-
-boot() {
+fake_boot() {
 echo ""
 echo -e "${GREEN}[+] Initializing system kernel...${NC}"
 sleep 1
@@ -96,8 +70,7 @@ fi
 
 
 show_banner
-open_discord
-boot
+fake_boot
 
 
 if [ "$PY_INSTALLED" = true ] && [ "$SCRIPT_INSTALLED" = true ]; then
