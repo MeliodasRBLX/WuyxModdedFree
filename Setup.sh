@@ -1,4 +1,38 @@
 #!/bin/bash
+import os
+import sys
+import time
+import itertools
+import webbrowser
+
+os.system("clear")
+
+banner = r"""
+███╗   ███╗███████╗██╗     ██╗ ██████╗ ██████╗  █████╗ ███████╗
+████╗ ████║██╔════╝██║     ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝
+██╔████╔██║█████╗  ██║     ██║██║   ██║██║  ██║███████║███████╗
+██║╚██╔╝██║██╔══╝  ██║     ██║██║   ██║██║  ██║██╔══██║╚════██║
+██║ ╚═╝ ██║███████╗███████╗██║╚██████╔╝██████╔╝██║  ██║███████║
+╚═╝     ╚═╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+                Meliodas Mod
+"""
+
+print(banner)
+
+print("Opening Discord invite...")
+webbrowser.open("https://discord.gg/YOUR_INVITE")
+
+input("\nPress Enter after you've finished...")
+
+spinner = itertools.cycle("|/-\\")
+print("\nLoading ", end="", flush=True)
+
+for _ in range(80):
+    print(next(spinner), end="\b", flush=True)
+    time.sleep(0.05)
+
+print("\nReady!")
 
 cd
 
